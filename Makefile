@@ -14,7 +14,7 @@ $(DIR_STATIC_LIB)/$(STATIC_LIB).o:
 # c: crea la biblioteca pero tiene que existir el .a
 # s: agrega/actualiza un índice del archivo que usará el compilador
 
-$(DIR_STATIC_LIB)/$(STATIC_LIB).a: $(DIR_STATIC_LIB)/$(STATIC_LIB).o 
+$(DIR_STATIC_LIB)/$(STATIC_LIB).a: $(DIR_STATIC_LIB)/$(STATIC_LIB).o
 	@ar $(AR_OPTIONS) $@ $^
 
 # también podríamos hacer más genérico $(OBJ):$(DIR_OBJ)/%.o:$(DIR_SRC)/%.c
@@ -23,7 +23,7 @@ $(DIR_STATIC_LIB)/$(STATIC_LIB).a: $(DIR_STATIC_LIB)/$(STATIC_LIB).o
 $(DIR_OBJ)/$(PROGRAM).o: $(DIR_SRC)/$(PROGRAM).c
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $^ -o $@
 
-# también podríamos hacer más genérico $(DIR_BIN)/%.out:$(DIR_OBJ)/%.o
+# también podríamos hacer más genérico $(DIR_BIN)/$(PROGRAM).out:$(OBJ)
 #
 $(DIR_BIN)/$(PROGRAM).out: $(DIR_OBJ)/$(PROGRAM).o
 	@$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LDLIBS)
